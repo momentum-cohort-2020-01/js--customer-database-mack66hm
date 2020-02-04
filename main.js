@@ -40,17 +40,26 @@ function capitalizeFirstLetter (string) {
 // })
 
 const customerListItems = customers.map(function (customer) {
-  const wholeName = capitalizeFirstLetter(customer.name.first) + ' ' + capitalizeFirstLetter(customer.name.last)
+    const wholeName = capitalizeFirstLetter(customer.name.first) + ' ' + capitalizeFirstLetter(customer.name.last)
+
   const li = document.createElement('li')
   li.textContent = wholeName
-  const newP = document.createElement('p')
-  const email = newP
+  const image= document.createElement('img')
+  image.src = customer.picture.large
+  li.appendChild(image)
+  const email = document.createElement('p')
   email.innerText = customer.email
   li.appendChild(email)
-  const address = newP
+  const address = document.createElement('p')
   address.innerText= customer.location.street + customer.location.city 
   + customer.location.state + customer.location.postcode
   li.appendChild(address)
+  const dateOfBirth = document.createElement('p')
+  dateOfBirth.innerText = customer.dob
+  li.appendChild(dateOfBirth)
+  const customerSince = document.createElement('p')
+  customerSince.innerText = customer.registered
+  li.appendChild(customerSince)
   return li
 })
 
