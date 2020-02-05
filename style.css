@@ -10,21 +10,48 @@ body{
 
 img{
     max-width: 100%;
+    border-radius: 60px;
 }
 
-.containter{
+.customers{
     display: flex;
     flex-wrap: wrap;
-    width: 30%;
-    justify-content: center;
 }
-
 .info{
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
+    margin: .5rem;
+    text-align: center;
 }
 
-.pic{
-    border-radius: 60px;
+ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    text-align: center;
+    justify-content: center;
+    padding-left: 1rem;
+}
+
+
+
+/* .location{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+} */
+
+p.email{
+    justify-content: right;
+    align-items: center;
 }

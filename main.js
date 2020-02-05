@@ -40,33 +40,48 @@ function capitalizeFirstLetter (string) {
 // })
 
 const customerListItems = customers.map(function (customer) {
-    const wholeName = capitalizeFirstLetter(customer.name.first) + ' ' + capitalizeFirstLetter(customer.name.last)
+  const wholeName = capitalizeFirstLetter(customer.name.first) + ' ' + capitalizeFirstLetter(customer.name.last)
 
   const li = document.createElement('li')
   li.textContent = wholeName
-  const image= document.createElement('img')
+  const image = document.createElement('img')
   image.src = customer.picture.large
   li.appendChild(image)
   const email = document.createElement('p')
   email.innerText = customer.email
+  email.classList.add('.info')
   li.appendChild(email)
   const address = document.createElement('p')
-  address.innerText= customer.location.street + customer.location.city 
-  + customer.location.state + customer.location.postcode
+  address.innerText = customer.location.street + ' ' + customer.location.city +
+  ' ' + nameToAbbr(customer.location.state) + ' ' + customer.location.postcode
+  address.classList.add('.location')
+
   li.appendChild(address)
   const dateOfBirth = document.createElement('p')
-  dateOfBirth.innerText = customer.dob
+  dateOfBirth.innerText = `DOB: ${moment(customer.dob).format(`MMMM Do YYYY`)}`
   li.appendChild(dateOfBirth)
   const customerSince = document.createElement('p')
-  customerSince.innerText = customer.registered
+  customerSince.innerText = `Customer since: ${moment(customer.registered).format('MMMM Do YYYY')}`
   li.appendChild(customerSince)
   return li
 })
 
 const ul = document.createElement('ul')
 for (const li of customerListItems) {
-  console.log(li)
+  ul.classList.add('.info')
   ul.appendChild(li)
 }
 
 document.querySelector('#customers').appendChild(ul)
+
+function nameToAbbr (stateName) {
+  const idx = usStates.findIndex(function (state) {
+    return state.name === stateName.toUpperCase()
+  })
+
+  if (idx === -1) {
+    return null
+  }
+
+  return usStates[idx].abbreviation
+}
