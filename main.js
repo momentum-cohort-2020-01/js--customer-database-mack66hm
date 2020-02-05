@@ -50,15 +50,15 @@ const customerListItems = customers.map(function (customer) {
   li.appendChild(image)
   const name = document.createElement('p')
   name.textContent = wholeName
-  name.classList.add('.h2')
+  name.classList.add('h2')
   li.appendChild(name)
   const email = document.createElement('p')
   email.innerText = customer.email
-  email.classList.add('.info')
+  email.classList.add('info')
   li.appendChild(email)
   const address = document.createElement('p')
   address.innerText = customer.location.street + ' ' + customer.location.city + ' ' + nameToAbbr(customer.location.state) + ' ' + customer.location.postcode
-  address.classList.add('.location')
+  address.classList.add('location')
 
   li.appendChild(address)
   const dateOfBirth = document.createElement('p')
